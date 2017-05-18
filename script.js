@@ -45,10 +45,12 @@ ARRAYS, AND ELEMENTS THAT YOU DON'T COMPLETELY KNOW HOW TO HANDLE.  GLHF
 var roundNumber=0;
 var lit = [];
 var newGame = $("#newGame");
+var field = $(".gameWrapper");
   var red = $(".red");
   var green = $(".green");
   var blue = $(".blue");
   var yellow = $(".yellow");
+  var clickArray = [];
 
 newGame.on("click", function(){
   lit=[];
@@ -58,37 +60,60 @@ newGame.on("click", function(){
   console.log(random);
   lit.push(random);
   console.log(lit);
-  lightUp(random);
+  lightUp(lit);
+var clicked = checkClick(random);
+  if (clicked){
+    roundNumber++;
+    while (roundNumber >= lit.length )
+    {
+      var random = Math.floor(Math.random() * 4) + 1;
+      lightUp(random);
+    }
+  }
 
+  });
 //}
-    function lightUp(random){
-      if (random === 1){
-        red.animate({opacity:1.0}, 1500);
-        red.animate({opacity:0.2}, 500);
-        red.on("click", function(){
-          return true;
 
-        });
-      }
-      else if(random ===2){
-        green.animate({opacity:1.0}, 1500);
-        green.animate({opacity:0.2}, 500);
 
+function lightUp(lit){
+
+      for (i = 0; i<=lit.length; i++){
+
+          if (lit[i] === 1){
+            setTimeout(function(){
+              red.animate({opacity:1.0}, 1300);
+              red.animate({opacity:0.2}, 200);
+              console.log("CLICK ON RED DAMMIT");
+            }, i*1500);
       }
-      else if(random ===3){
-        blue.animate({opacity:1.0}, 1500);
-        blue.animate({opacity:0.2}, 500);
+      else if(lit[i] ===2){
+setTimeout(function(){
+        green.animate({opacity:1.0}, 1300);
+        green.animate({opacity:0.2}, 200);
+      }, i*1500);
       }
-      else {
-        yellow.animate({opacity:1.0}, 1500);
-        yellow.animate({opacity:0.2}, 500);
+
+      else if(lit[i] ===3){
+setTimeout(function(){
+        blue.animate({opacity:1.0}, 1300);
+        blue.animate({opacity:0.2}, 200);
+    }, i*1500);
+  }
+      else if (lit[i]===4) {
+        setTimeout(function(){
+        yellow.animate({opacity:1.0}, 1300);
+        yellow.animate({opacity:0.2}, 200);
+      }, i*1500);
       }
     }
+}
 
-
-
-
-
-
-
-});
+    function checkClick(lit){
+      if (lit === 1){
+        red.on("click", function(){
+          console.log("Good click!")
+          clickArray.push(lit);
+          return true;
+        });
+      }
+    }
