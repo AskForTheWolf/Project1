@@ -51,29 +51,34 @@ var field = $(".gameWrapper");
   var blue = $(".blue");
   var yellow = $(".yellow");
   var clickArray = [];
+$(document).ready(function(){
 
-newGame.on("click", function(){
-  lit=[];
+
+  newGame.on("click", function(){
   console.log("New Game!");
-  //while(roundNumber === lit.length){
   var random = Math.floor(Math.random() * 4) + 1;
   console.log(random);
   lit.push(random);
   console.log(lit);
   lightUp(lit);
-var clicked = checkClick(random);
-  if (clicked){
-    roundNumber++;
-    while (roundNumber >= lit.length )
-    {
+  //while(roundNumber === lit.length){
+
+/*
+    while (roundNumber <= lit.length ){
       var random = Math.floor(Math.random() * 4) + 1;
-      lightUp(random);
+      console.log(random);
+      lit.push(random);
+      console.log(lit);
+      lightUp(lit);
     }
-  }
-
+    */
   });
-//}
 
+
+//}
+red.on("click", function(){
+  console.log("clicked red");
+});
 
 function lightUp(lit){
 
@@ -83,6 +88,9 @@ function lightUp(lit){
             setTimeout(function(){
               red.animate({opacity:1.0}, 1300);
               red.animate({opacity:0.2}, 200);
+              red.on("click", function(){
+                console.log("clicked red");
+              });
               console.log("CLICK ON RED DAMMIT");
             }, i*1500);
       }
@@ -117,3 +125,4 @@ setTimeout(function(){
         });
       }
     }
+  })
