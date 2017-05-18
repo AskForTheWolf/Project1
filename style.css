@@ -12,6 +12,7 @@ ul {
 ul, li {
 	padding: 0;
 	margin: 0;
+  z-index: 1;
 }
 .new-game{
   position: absolute;
@@ -19,6 +20,7 @@ ul, li {
 }
 .gameWrapper{
   text-align: center;
+
 }
 .simon{
   position:absolute;
@@ -30,6 +32,19 @@ ul, li {
   border:10px solid #000;
   margin:-150px 0 0 -150px;
   background: black;
+
+}
+.quads{
+  position:absolute;
+  top:40%;
+  left:40%;
+  width:600px;
+  height:600px;
+  border-radius:1000px;
+  border:10px solid #000;
+  margin:-150px 0 0 -150px;
+  background: black;
+
 }
 
 
@@ -46,6 +61,7 @@ ul, li {
   opacity:.2;
   float:left;
   border-bottom-left-radius: 90%;
+  z-index: 1;
 }
 .green{
   background:green;
@@ -58,6 +74,7 @@ ul, li {
     opacity:.2;
     float:right;
     border-bottom-right-radius: 90%;
+      z-index: 1;
   }
 .blue{
   cursor:pointer;
@@ -70,6 +87,7 @@ ul, li {
   float:left;
   background:blue;
   border-top-left-radius: 90%;
+    z-index: 1;
 }
 
 .red{
@@ -83,4 +101,5 @@ ul, li {
     opacity:.2;
     float:right;
     border-top-right-radius: 90%;
+      z-index: 1;
   }
